@@ -55,12 +55,12 @@ if ( ! function_exists( 'kumle_fonts_url' ) ) {
 		$subsets   = 'latin,latin-ext';
 
 		/* translators: If there are characters in your language that are not supported by Barlow, translate this to 'off'. Do not translate into your own language. */
-		if ( 'off' !== _x( 'on', 'Barlow font: on or off', 'kumle' ) ) {
+		if ( 'off' !== _x( 'off', 'Barlow font: on or off', 'kumle' ) ) {
 			$fonts[] = 'Barlow:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i';
 		}
 
 		/* translators: If there are characters in your language that are not supported by Playfair Display, translate this to 'off'. Do not translate into your own language. */
-		if ( 'off' !== _x( 'on', 'Playfair Display font: on or off', 'kumle' ) ) {
+		if ( 'off' !== _x( 'off', 'Playfair Display font: on or off', 'kumle' ) ) {
 			$fonts[] = 'Playfair Display:400,400i,700,700i,900,900i';
 		}
 		

@@ -22,14 +22,23 @@
 
 <body <?php body_class(); ?>>
 
-	<?php do_action( 'wp_body_open' ); ?>
+<?php do_action( 'wp_body_open' ); ?>
 
-	<div id="page" class="site">
-		<header id="masthead" class="site-header" role="banner">
+<div id="page" class="site">
+    <div class="container asd">
+<?php 
+    // global $shortcode_tags;
+    // echo $shortcode_tags['dd-owl-carousel']([
+    //     'id' => 35
+    // ]); 
+    $is_front_page = is_front_page();
+?>
+    </div>
+	<header id="masthead" class="site-header" role="banner">
         <div class="head-wrap">
             <div class="container">
 
-            	<div class="site-branding <?=  is_front_page() ? 'invisible' : ''; ?>">
+            	<div class="site-branding <?= $is_front_page ? 'invisible' : ''; ?>">
             		<?php 
 
                     $site_identity = kumle_get_option( 'site_identity' ); 
@@ -131,7 +140,7 @@
     </header><!-- #masthead -->
 	
 	<div id="content" class="site-content">
-        <?php  if( !is_front_page() && !is_page_template('elementor_header_footer') ){ ?>
-            <div class="container">
+        <?php  if( !is_page_template('elementor_header_footer') ){ ?>
+            <div class="<?= $is_front_page ? 'container-fluid' : 'container'; ?>">
         <?php } ?>
             <div class="inner-wrapper">

@@ -10,6 +10,12 @@
 define('KW_TEMPLATE_DIRECTORY', get_template_directory());
 define('KW_TEMPLATE_DIRECTORY_URI', get_template_directory_uri());
 
+function sa($array = [], $save = false){
+	if ($save) return '<pre>' . print_r($array, true) . '</pre>';
+	echo "<pre>";
+	print_r($array);
+	echo "</pre>";
+}
 
 if ( ! function_exists( 'kumle_setup' ) ) :
 /**
@@ -130,7 +136,7 @@ add_action( 'widgets_init', 'kumle_widgets_init' );
 */
 function kumle_scripts() {
 
-	wp_enqueue_style( 'kumle-fonts', kumle_fonts_url(), array(), null );
+	// wp_enqueue_style( 'kumle-fonts', kumle_fonts_url(), array(), null );
 
 	wp_enqueue_style( 'jquery-meanmenu', KW_TEMPLATE_DIRECTORY_URI . '/assets/third-party/meanmenu/meanmenu.css' );
 
@@ -141,6 +147,8 @@ function kumle_scripts() {
 	wp_enqueue_style( 'font-awesome', KW_TEMPLATE_DIRECTORY_URI . '/assets/third-party/font-awesome/css/font-awesome.min.css', '', '4.7.0' );
 
 	wp_enqueue_style( 'kumle-style', KW_TEMPLATE_DIRECTORY_URI . '/style.css', '', filemtime(__DIR__.'/style.css') );
+
+	
 
 	wp_enqueue_script( 'kumle-navigation', KW_TEMPLATE_DIRECTORY_URI . '/assets/js/navigation.js', array(), '20151215', true );
 
@@ -156,7 +164,7 @@ function kumle_scripts() {
 
 	wp_enqueue_script( 'jquery.bxslider.min', KW_TEMPLATE_DIRECTORY_URI . '/assets/js/jquery.bxslider.min.js', array( 'jquery' ), '2.0.2', true );
 
-	wp_enqueue_script( 'main-page', KW_TEMPLATE_DIRECTORY_URI . '/assets/js/main-page.js', array( 'jquery' ), '2.0.3', true );
+	wp_enqueue_script( 'main-page', KW_TEMPLATE_DIRECTORY_URI . '/assets/js/main-page.js', array( 'jquery' ), filemtime(__DIR__.'/assets/js/main-page.js'), true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -164,5 +172,32 @@ function kumle_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'kumle_scripts' );
 
+function remove_array_value($array, $value_to_delete)
+{
+	$array = array_flip($array); //Меняем местами ключи и значения
+	if (is_array($value_to_delete)) {
+		foreach ($value_to_delete as $value) {
+			unset ($array[$value]) ; //Удаляем элемент массива
+		}
+	}else{
+		unset ($array[$value_to_delete]) ; //Удаляем элемент массива
+	}
+	return array_flip($array); //Меняем местами ключи и значения
+}
+
 // Load main file.
 require_once trailingslashit( KW_TEMPLATE_DIRECTORY ) . '/includes/main.php';
+
+
+
+
+
+add_action('admin_menu', function(){
+	add_menu_page( 'Дополнительные настройки сайта', 'Пульт', 'manage_options', 'site-options', 'add_my_setting', '', 33 ); 
+} );
+
+// функция отвечает за вывод страницы настроек
+// подробнее смотрите API Настроек: http://wp-kama.ru/id_3773/api-optsiy-nastroek.html
+function add_my_setting(){
+	include_once KW_TEMPLATE_DIRECTORY . '/includes/admin-page-pult.php';
+}

@@ -60,13 +60,9 @@ jQuery(function($){
 
 
 
-    var windowWidth = $(window).width();
-    // console.log('windowWidth = ' + windowWidth);
+    if (location.pathname === '/' && $(window).width() < 768) {
 
-    if (windowWidth < 768) {
-        // console.log(windowWidth);
-
-        $.post('smalltable.html',function(data){
+        $.post('/wp-content/themes/kw-theme/smalltable.html',function(data){
             $('.jbody').html(data);
             $('.k-slider').bxSlider({
                 nextText: '&gt;',
@@ -108,16 +104,16 @@ jQuery(function($){
 			var str = form.serialize();
 
 			$.ajax({
-                url: 'contactform.php',
+                url: '/wp-content/themes/kw-theme/contactform.php',
                 type: 'POST',
                 data: str
             })
             .done(function(msg) {
                 if(msg === "OK"){
                     var result = "<div class='bg-success'>Danke für Ihre Nachricht! Ich melde mich bei Ihnen in Kürze.</div>"
-                    form.html(result);
+                    form.find('.modal-body').html(result);
                 }else{
-                    form.html(msg);
+                    form.find('.modal-body').html(msg);
                 }
             })
             .always(function() {
@@ -163,3 +159,30 @@ jQuery(function($){
     app.initialize();
   
 }(jQuery));
+
+
+
+jQuery(function($) {
+
+    // var elems = $('kw-lazyload')
+    var elems = document.querySelectorAll('.kw-lazyload')
+
+
+    function kw_lazyload(elem) {
+        
+        var viewportHeight = window.innerHeight + 100; // plus limit
+
+        elems.forEach(function(elem) {
+            var elemY = elem.getBoundingClientRect().top;
+            // console.log(elemY)
+            if (viewportHeight > elemY) {
+                elem.classList.add('lazy-loaded');
+            }
+        })
+
+    }
+
+    kw_lazyload();
+    window.addEventListener('scroll', kw_lazyload);
+
+})

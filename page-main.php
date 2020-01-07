@@ -11,7 +11,7 @@
 get_header(); ?>
 
 <!-- <link rel="stylesheet" href="<?= KW_TEMPLATE_DIRECTORY_URI . '/css/main-page-bootstrap-grid.css'; ?>"> -->
-<link rel="stylesheet" href="<?= KW_TEMPLATE_DIRECTORY_URI . '/css/main-page-style.css?ver=1.0.1'; ?>">
+<link rel="stylesheet" href="<?= KW_TEMPLATE_DIRECTORY_URI . '/css/main-page-style.css?ver=1.0.5'; ?>">
 
 <div class="kw-menu menu clearfix">
 	<div class="w1170 container">
@@ -32,6 +32,7 @@ get_header(); ?>
 	</div>
 </div><!--/menu-->
 
+<?php if(!wp_is_mobile()): ?>
 <div class="slider" id="block1">
 	<div class="w1170 container">
 		<div class="girl"></div>
@@ -49,10 +50,11 @@ get_header(); ?>
 		<div class="tablet"></div>
 		<div class="arrow-down"></div>
 		<div class="website">website
-			<button href="" class="orderbutton" data-toggle="modal" data-target="#myModal">anfragen</button>
+			<button class="orderbutton" data-toggle="modal" data-target="#myModal">anfragen</button>
 		</div>
 	</div>
 </div><!--/slider-->
+<?php endif; ?>
 
 <div class="vorteile" id="block2">
 	<div class="strip"><div class="w1170 container"><div class="stripinner"></div></div></div>
@@ -60,15 +62,15 @@ get_header(); ?>
 		<h2>Unsere vorteile</h2>
 		<h3>individuell, günstig, zuverlässig</h3>
 		<div class="clearfix">
-			<div class="vort1 col-sm-4">
+			<div class="vort1 col-sm-4 kw-lazyload">
 				<h3>Team</h3>
 				<p>Unser Team setzt sich aus hochqualifizierten und erfahrenen Webdesigner/Entwicklern und IT-Spezialisten zusammen. Dies ermöglicht uns Ihr Projekt effizient und in kürzester Zeit zu realisieren. Wir sind nicht nur professionell, sondern behalten die aktuellsten Entwicklungen auf dem Gebiet der Webtechnologien stetig im Auge, damit wir Ihnen die modernsten und effektivsten Lösungen anbieten können.</p>
 			</div>
-			<div class="vort2 col-sm-4">
+			<div class="vort2 col-sm-4 kw-lazyload">
 				<h3>Arbeitsstil</h3>
 				<p>Von Anfang an bleiben wir stets in Kontakt mit Ihnen. Dank der modernen Kommunikationsmöglichkeiten können Sie den ganzen Prozess der Erstellung Ihrer Website mitverfolgen, kontrollieren und in den Prozess aktiv eingreifen, falls Sie den Bedarf danach spüren!</p>
 			</div>
-			<div class="vort3 col-sm-4">
+			<div class="vort3 col-sm-4 kw-lazyload">
 				<h3>regionale Zugehörigkeit</h3>
 				<p>Unser Sitz befindet sich in Köln, einer Stadt, die uns fasziniert und inspiriert. Für Sie sind wir dank der modernen Kommunikationstechnik aus jeder denkbaren Entfernung erreichbar. Ein kurzer Anruf, eine formlose E-Mail, eine knappe Message – und  schon kommen Sie der Realisierung Ihres Projektes ein Stückchen näher!</p>
 			</div>
@@ -231,7 +233,7 @@ get_header(); ?>
 				<div class="jcol"><u>opt.</u></div>
 			</div>
 			<div class="jrow">
-				<div class="jcol firstcol"><b>kostenloses Anbinden von 2 Zahlungsystemen <nobr>(PayPal und SOFORT)</nobr></b></div>
+				<div class="jcol firstcol"><div class="pay-clip">kostenloses Anbinden von 2 Zahlungsystemen <nobr>(PayPal und SOFORT)</nobr></div></div>
 				<div class="jcol"><i></i></div>
 				<div class="jcol"><i></i></div>
 				<div class="jcol"><u>opt.</u></div>
@@ -314,7 +316,7 @@ get_header(); ?>
 	</div>
 </div><!--/services-->
 
-<div class="marketingblock" id="block4">
+<div class="marketingblock kw-lazyload" id="block4">
 	<div class="w1170 container">
 		<h2>Zusatzleistungen</h2>
 		<h3>lasse Sie uns Ihre Website pflegen</h3>
@@ -353,7 +355,7 @@ get_header(); ?>
 	</div>
 </div><!--/marketingblock-->
 
-<div class="contactblock" id="block5">
+<div class="contactblock kw-lazyload" id="block5">
 	<div class="w1170 container clearfix">
 		<div class="contactform">
 			<p>Sie erreichen uns ganz einfach über dieses Kontaktformular. Senden Sie uns eine Nachricht und wir melden uns in Kürze.</p>
@@ -390,34 +392,18 @@ get_header(); ?>
 	</div>
 </div>
 
-<div class="footer">
-	<div class="container">
-		<div class="row">
-			<div class="inlineUp col-sm-2">
-				<a href="#" class="up" id="go-top">Up</a>
-			</div>
-			<div class="inlineCopy col-sm-5">
-				<div class="copy">&copy; 2019 - Köln Webstudio - Ihre Webagentur für Webdesign, Webentwicklung, SEO und vieles mehr</div>
-			</div>
-			<div class="inlineImp clerfix col-sm-4">
-				<div class="impressum-btn close" data-toggle="modal" data-target="#datenschutz">datenschutz |&nbsp;</div>
-				<div class="impressum-btn close" data-toggle="modal" data-target="#impressum">impressum</div>
-			</div>
-		</div>
-	</div>	
-</div>
 
 <!-- contactmodal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <form class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Hinterlassen Sie Ihre Kontaktdaten und in kürzester Zeit melden wir uns bei Ihnen</h4>
       </div>
       <div class="modal-body clearfix">
 
-		<form class="form-horizontal">
+		<div class="form-horizontal">
 		  <div class="form-group">
 		    <label for="inputName2" class="control-label">Name</label>
 		    <div class="">
@@ -440,112 +426,17 @@ get_header(); ?>
 		    <div class="">
 		    	<input type="hidden" name="msg" value="no msg now">
 		    	<input type="hidden" name="choice" value="no choice now">
-		      <button type="submit" class="btn btn-successt">Senden</button>
 		    </div>
 		  </div>
-		</form>
+		</div>
 
       </div>
       <div class="modal-footer">
+		<button type="submit" class="btn btn-successt">Senden</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
-    </div>
+    </form>
   </div>
 </div><!--/contactmodal-->
-
-<!--impressum-->
-<div class="impressum modal fade bs-example-modal-lg" id="impressum" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Impressum</h4>
-      </div>
-      <div class="modal-body">
-
-<p>Angaben gemäß § 5 TMG:</p>
-
-<p>koeln-webstudio.de<br>
-Inhaber: Konstantin Falke<br>
-Bergerstr. 179<br>
-51145 Köln</p>
-
-<p>Kontakte:</p>
-
-<p>
-Telefon: +49 157 88453267<br>
-E-Mail: info@koeln-webstudio.de<br>
-ICQ: 169900<br>
-Skype: g.i.g-group</p>
-
-<p>Steuernummer:<br>
-216/2566/2981</p>
-
-<p>Die Europäische Kommission bietet eine Onlineplattform für Streitbeilegung an, die Sie hier finden:<br>
-<a href="http://ec.europa.eu/consumers/odr/" target="_blank">http://ec.europa.eu/consumers/odr/</a></p><p>
-Unter diesem Link finden Sie die Kontaktdaten der offiziellen Streitbeilegungsstellen:<br>
-<a href="https://webgate.ec.europa.eu/odr/main/index.cfm?event=main.adr.show" target="_blank">https://webgate.ec.europa.eu/odr/main/index.cfm?event=main.adr.show</a></p>
-
-<p>Zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle sind wir nicht verpflichtet und nicht bereit.</p>
-
-<p>Haftung für Inhalte:</p>
-
-<p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
-
-<p>Haftung für Links:</p>
-
-<p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
-
-<p>Urheberrecht:</p>
-
-<p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
-
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    </div>
-    </div>
-  </div>
-</div><!--/impressum-->
-
-<!--datenschutz-->
-<div class="impressum modal fade bs-example-modal-lg" id="datenschutz" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Datenschutz</h4>
-      </div>
-      <div class="modal-body">
-
-<p>Informationen über Cookies</p>
-
-<p>Zur Optimierung unseres Internetauftritts setzen wir Cookies ein. Es handelt sich dabei um kleine Textdateien, die im Arbeitsspeicher Ihres Computers gespeichert werden. Diese Cookies werden nach dem Schließen des Browsers wieder gelöscht. Andere Cookies verbleiben auf Ihrem Rechner (Langzeit-Cookies) und erkennen ihn beim nächsten Besuch wieder. Dadurch können wir Ihnen einen besseren Zugang auf unsere Seite ermöglichen.</p>
-
-<p>Das Speichern von Cookies können Sie verhindern, indem Sie in Ihren Browser-Einstellungen „Cookies blockieren” wählen. Dies kann aber eine Funktionseinschränkung unserer Angebote zur Folge haben.</p>
-
-<p>Datenschutzerklärung für die Nutzung von Google Analytics</p>
-
-<p>Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. („Google”). Google Analytics verwendet sog. „Cookies”, Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website durch Sie ermöglichen. Die durch den Cookie erzeugten Informationen über Ihre Benutzung dieser Website werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Im Falle der Aktivierung der IP-Anonymisierung auf dieser Webseite wird Ihre IP-Adresse von Google jedoch innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum zuvor gekürzt.</p>
-
-<p>Nur in Ausnahmefällen wird die volle IP-Adresse an einen Server von Google in den USA übertragen und dort gekürzt. Im Auftrag des Betreibers dieser Website wird Google diese Informationen benutzen, um Ihre Nutzung der Website auszuwerten, um Reports über die Websiteaktivitäten zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen gegenüber dem Websitebetreiber zu erbringen. Die im Rahmen von Google Analytics von Ihrem Browser übermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengeführt.</p>
-
-<p>Sie können die Speicherung der Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich werden nutzen können. Sie können darüber hinaus die Erfassung der durch das Cookie erzeugten und auf Ihre Nutzung der Website bezogenen Daten (inkl. Ihrer IP-Adresse) an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem sie das unter dem folgenden Link verfügbare Browser-Plugin herunterladen und installieren: http://tools.google.com/dlpage/gaoptout?hl=de.</p>
-
-<p>Auskunft, Löschung, Sperrung</p>
-
-<p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit über die im Impressum angegeben Adresse des Webseitenbetreibers an uns wenden.</p>
-
- 
-
-<p>Quellenangabe: eRecht24, eRecht24 Datenschutzerklärung für Facebook, Datenschutzerklärung für Google Analytics, eRecht24 Datenschutzerklärung Google Adsense, Google +1 Bedingungen</p>
-
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    </div>
-    </div>
-  </div>
-</div><!--/datenschutz-->
 
 <?php get_footer();
